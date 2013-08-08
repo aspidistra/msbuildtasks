@@ -178,6 +178,18 @@ namespace MSBuild.Community.Tasks {
 			set { _usePassive = value; }
 		}
 
+        private bool _bypassHttpProxy;
+
+        /// <summary>
+        /// Gets or sets a flag to determine if the FTP request should not use the system-configured HTTP proxy. 
+        /// </summary>
+        /// <remarks>This is a work around for the connection error "The requested FTP command is not supported when using HTTP proxy".</remarks>
+        public bool BypassHttpProxy
+        {
+            get { return _bypassHttpProxy; }
+            set { _bypassHttpProxy = value; }
+        }
+
 		/// <summary>
 		/// When overridden in a derived class, executes the task.
 		/// </summary>
@@ -382,6 +394,8 @@ namespace MSBuild.Community.Tasks {
 			rq.UseBinary = true;
 			rq.Timeout = 7000;
 			rq.KeepAlive = false;
+            if (_bypassHttpProxy)
+                rq.Proxy = GlobalProxySelection.GetEmptyWebProxy();
 			if (!string.IsNullOrEmpty(_username)) {
 				rq.Credentials = new NetworkCredential(_username, _password);
 			}
