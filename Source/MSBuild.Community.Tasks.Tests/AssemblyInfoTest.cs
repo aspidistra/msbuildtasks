@@ -16,7 +16,7 @@ namespace MSBuild.Community.Tasks.Tests
     {
         private string testDirectory;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void FixtureInit() 
         {
             MockBuild buildEngine = new MockBuild();
@@ -42,6 +42,23 @@ namespace MSBuild.Community.Tasks.Tests
 
         }
 
+        [Test(Description = "Create VersionInfo in F#")]
+        public void AssemblyInfoFS() {
+            AssemblyInfo task = new AssemblyInfo();
+            task.BuildEngine = new MockBuild();
+            task.CodeLanguage = "fs";
+            string outputFile = Path.Combine(testDirectory, "VersionInfo.fs");
+            task.OutputFile = outputFile;
+            task.AssemblyVersion = "1.2.3.4";
+            task.AssemblyFileVersion = "1.2.3.4";
+            task.AssemblyInformationalVersion = "1.2.3.4";
+            task.GenerateClass = true;
+            
+            Assert.IsTrue(task.Execute(), "Execute Failed");
+
+            Assert.IsTrue(File.Exists(outputFile), "File missing: " + outputFile);
+        }
+
         [Test(Description = "Create VersionInfo in VB")]
         public void AssemblyInfoVB() {
             AssemblyInfo task = new AssemblyInfo();
@@ -59,6 +76,7 @@ namespace MSBuild.Community.Tasks.Tests
         }
 
         [Test(Description = "Create VersionInfo in CPP/CLI")]
+        [Explicit]
         public void AssemblyInfoCPP()
         {
             AssemblyInfo task = new AssemblyInfo();
@@ -142,7 +160,7 @@ namespace MSBuild.Community.Tasks.Tests
                 content = stream.ReadToEnd();
             }
             Assert.IsNotNull(content);
-            Assert.That(content.Contains("NeutralResourcesLanguage(\"en-US\","));
+            Assert.That(content.Contains("assembly: System.Resources.NeutralResourcesLanguage(\"en-US\")"));
         }
     
         [Test(Description="Creates an assembly info which has InternalsVisibleTo attribute")]
@@ -161,7 +179,7 @@ namespace MSBuild.Community.Tasks.Tests
                 content = stream.ReadToEnd();
             }
             Assert.IsNotNull(content);
-            Assert.That(content.Contains("assembly: InternalsVisibleTo(\"UnitTests\")"));
+            Assert.That(content.Contains("assembly: System.Runtime.CompilerServices.InternalsVisibleTo(\"UnitTests\")"));
         }
 
         [Test(Description = "Creates an assembly info which has AllowPartiallyTrustedCallers attribute")]
@@ -180,7 +198,7 @@ namespace MSBuild.Community.Tasks.Tests
                 content = stream.ReadToEnd();
             }
             Assert.IsNotNull(content);
-            Assert.That(content.Contains("assembly: AllowPartiallyTrustedCallers"));
+            Assert.That(content.Contains("assembly: System.Security.AllowPartiallyTrustedCallers()"));
         }
 
         private AssemblyInfo CreateCSAssemblyInfo(string outputFile)

@@ -17,15 +17,15 @@ namespace MSBuild.Community.Tasks.Tests
         private Version task;
         private string versionFile;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetup()
         {
             testDirectory = TaskUtility.makeTestDirectory(new MockBuild());
             versionFile = Path.Combine(testDirectory, @"version.txt");
         }
 
-        [TestFixtureTearDown]
-        public void TestFixtureTearDown()
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             if (File.Exists(versionFile)) { File.Delete(versionFile); }
         }
@@ -69,6 +69,25 @@ namespace MSBuild.Community.Tasks.Tests
 
             string fileContents = File.ReadAllText(versionFile);
             Assert.AreEqual("1.2.4.5", fileContents);
+        }
+
+        [Test]
+        public void SpecifyFile_FileExists_NotWrittenWhenUnchanged()
+        {
+            File.WriteAllText(versionFile, "1.2.3.4");
+            DateTime startMtime = File.GetLastWriteTimeUtc(versionFile);
+            task.VersionFile = versionFile;
+            Assert.IsTrue(task.Execute(), "Execute Failed");
+
+            Assert.AreEqual(1, task.Major);
+            Assert.AreEqual(2, task.Minor);
+            Assert.AreEqual(3, task.Build);
+            Assert.AreEqual(4, task.Revision);
+
+            string fileContents = File.ReadAllText(versionFile);
+            Assert.AreEqual("1.2.3.4", fileContents);
+
+            Assert.AreEqual(startMtime, File.GetLastWriteTimeUtc(versionFile));
         }
 
         [Test]

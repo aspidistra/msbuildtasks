@@ -1,26 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F88A60A8-564C-4E70-92DC-E92DBB897641}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MSBuild.Community.Tasks</RootNamespace>
     <AssemblyName>MSBuild.Community.Tasks</AssemblyName>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSBuild.Community.Tasks.snk</AssemblyOriginatorKeyFile>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +26,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,19 +39,26 @@
     <DocumentationFile>..\..\Build\MSBuild.Community.Tasks.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.Reduced.1.9.1.8\lib\net20\Ionic.Zip.Reduced.dll</HintPath>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Compiler.CodeDom, Version=1.0.0.1, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Compiler.CodeDom.1.0.0.1\lib\net40\FSharp.Compiler.CodeDom.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v3.5" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -68,9 +68,13 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Attrib.cs" />
     <Compile Include="ByteDescriptions.cs" />
+    <Compile Include="Checksum\Checksum.cs" />
     <Compile Include="Computer\Computer.cs" />
     <Compile Include="Beep\Beep.cs" />
     <Compile Include="DeleteTree.cs" />
+    <Compile Include="DependencyGraph\DependencyGraph.cs" />
+    <Compile Include="DependencyGraph\ProjectFileParser.cs" />
+    <Compile Include="DependencyGraph\Reference.cs" />
     <Compile Include="EmbedNativeResource.cs" />
     <Compile Include="FtpUpload\FtpUpload.cs" />
     <Compile Include="FtpUpload\IFtpWebRequest.cs" />
@@ -113,17 +117,28 @@
     </Compile>
     <Compile Include="Fusion\InstallReference.cs" />
     <Compile Include="Fusion\NativeMethods.cs" />
+    <Compile Include="Git\GitCommitDate.cs" />
+    <Compile Include="Git\GitDescribe.cs" />
     <Compile Include="Git\GitBranch.cs" />
     <Compile Include="Git\GitClient.cs" />
+    <Compile Include="Git\GitCommits.cs" />
+    <Compile Include="Git\GitPendingChanges.cs" />
     <Compile Include="Git\GitVersion.cs" />
     <Compile Include="HtmlHelp\ChmCompiler.cs" />
     <Compile Include="HtmlHelp\HxCompiler.cs" />
     <Compile Include="InnoSetup.cs" />
+    <Compile Include="JavaScript\CssCompress.cs" />
+    <Compile Include="JavaScript\CssCompressor.cs" />
     <Compile Include="Merge.cs" />
     <Compile Include="Net\HttpRequest.cs" />
     <Compile Include="NuGet\NuGetBase.cs" />
+    <Compile Include="NuGet\NuGetDelete.cs" />
+    <Compile Include="NuGet\NuGetInstall.cs" />
     <Compile Include="NuGet\NuGetPack.cs" />
     <Compile Include="NuGet\NuGetPush.cs" />
+    <Compile Include="NuGet\NuGetRestore.cs" />
+    <Compile Include="NuGet\NuGetUpdate.cs" />
+    <Compile Include="NUnit3.cs" />
     <Compile Include="PathUtil.cs" />
     <Compile Include="Regex\RegexCompiler.cs" />
     <Compile Include="Sandcastle\BuildAssembler.cs">
@@ -164,14 +179,17 @@
     <Compile Include="SourceServer\SrcTool.cs" />
     <Compile Include="SourceServer\SvnSourceIndex.cs" />
     <Compile Include="SourceServer\SymbolFile.cs" />
+    <Compile Include="SourceServer\TfsSourceIndex.cs" />
     <Compile Include="SqlServer\SqlPubWiz.cs" />
     <Compile Include="Subversion\SvnCopy.cs" />
     <Compile Include="Subversion\Info.cs" />
     <Compile Include="Subversion\SvnStatus.cs" />
     <Compile Include="SymbolServer\SymStore.cs" />
+    <Compile Include="Tfs\InfoCommandResponse.cs" />
     <Compile Include="Tfs\TfsClient.cs" />
     <Compile Include="Services\Win32Registry.cs" />
     <Compile Include="User\User.cs" />
+    <Compile Include="WebUpload.cs" />
     <Compile Include="Xml\XmlMassUpdate.cs" />
     <Compile Include="IIS\WebDirectoryScriptMap.cs" />
     <Compile Include="IIS\WebDirectorySetting.cs" />
@@ -215,7 +233,7 @@
     <Compile Include="Math\MathBase.cs" />
     <Compile Include="Math\Multiple.cs" />
     <Compile Include="Math\Subtract.cs" />
-    <Compile Include="Move.cs" />
+    <Compile Include="MV.cs" />
     <Compile Include="NDoc.cs" />
     <Compile Include="NUnit.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -269,13 +287,5 @@
     <Folder Include="GitHub\" />
     <Folder Include="Vault\" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

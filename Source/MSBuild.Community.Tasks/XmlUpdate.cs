@@ -31,9 +31,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Linq;
 using Microsoft.Build.Utilities;
 using Microsoft.Build.Framework;
 using System.Xml.XPath;
+using System.Xml.Linq;
 
 
 
@@ -152,35 +154,55 @@ namespace MSBuild.Community.Tasks
             try
             {
                 Log.LogMessage(Properties.Resources.XmlUpdateDocument, _xmlFileName);
-                
-                XmlDocument document = new XmlDocument();
-                document.Load(_xmlFileName);
-                
-                XPathNavigator navigator = document.CreateNavigator();                
-                XmlNamespaceManager manager = new XmlNamespaceManager(navigator.NameTable);
 
-                if (!string.IsNullOrEmpty(_prefix) && !string.IsNullOrEmpty(_namespace))
+                XDocument xdoc = XDocument.Load(_xmlFileName);
+                XmlNamespaceManager manager = new XmlNamespaceManager(new NameTable());
+
+                if (!string.IsNullOrEmpty(_namespace))
                 {
+                    //by default, if _prefix is not specified, set it to "", this way,
+                    //manager.AddNamespace will add the _namespace as the default namespace
+                    if (_prefix == null)
+                        _prefix = String.Empty;
+
                     manager.AddNamespace(_prefix, _namespace);
                 }
-                
-                XPathExpression expression = XPathExpression.Compile(_xpath, manager);                
-                XPathNodeIterator nodes = navigator.Select(expression);
 
-                Log.LogMessage(Properties.Resources.XmlUpdateNodes, nodes.Count);
 
-                while (nodes.MoveNext())
-                    if (_delete)
-                        nodes.Current.DeleteSelf();
-                    else
-                        nodes.Current.SetValue(_value ?? string.Empty);
+                var items = xdoc.XPathEvaluate(_xpath, manager) as IEnumerable<object>;
 
-                using (XmlTextWriter writer = new XmlTextWriter(_xmlFileName, Encoding.UTF8))
+                Log.LogMessage(Properties.Resources.XmlUpdateNodes, items.Count());
+
+                foreach (var item in items.ToArray())
                 {
-                    writer.Formatting = Formatting.Indented;
-                    document.Save(writer);
-                    writer.Close();                    
+                    var attr = item as XAttribute;
+                    if (attr != null)
+                    {
+                        if (_delete)
+                        {
+                            attr.Remove();
+                        }
+                        else
+                        {
+                            attr.SetValue(_value);
+                        }
+                    }
+
+                    var ele = item as XElement;
+                    if (ele != null)
+                    {
+                        if (_delete)
+                        {
+                            ele.Remove();
+                        }
+                        else
+                        {
+                            ele.SetValue(_value);
+                        }
+                    }
                 }
+
+                xdoc.Save(_xmlFileName);
             }
             catch (Exception ex)
             {

@@ -1,13 +1,20 @@
-#MSBuild Community Tasks
+# MSBuild Community Tasks
+
+[![Join the chat at https://gitter.im/loresoft/msbuildtasks](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/loresoft/msbuildtasks?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The MSBuild Community Tasks Project is an open source project for MSBuild tasks.
 
-##Download
+[![Build status](https://ci.appveyor.com/api/projects/status/16y9eh9swsqn5g8l?svg=true)](https://ci.appveyor.com/project/LoreSoft/msbuildtasks)
 
-The latest nightly build of can be downloaded from the following location.
-http://code.google.com/p/msbuildtasks/downloads/list
+[![NuGet Version](https://img.shields.io/nuget/v/MSBuildTasks.svg)](https://nuget.org/packages/MSBuildTasks)
 
-The MSBuild Community Tasks  library is also available on nuget.org via package name `MSBuildTasks`.
+
+## Download
+
+The latest build can be downloaded from the releases section.
+https://github.com/loresoft/msbuildtasks/releases
+
+The MSBuild Community Tasks library is also available on nuget.org via package name `MSBuildTasks`.
 
 To install MSBuildTasks, run the following command in the Package Manager Console
 
@@ -16,736 +23,291 @@ To install MSBuildTasks, run the following command in the Package Manager Consol
 More information about NuGet package avaliable at
 https://nuget.org/packages/MSBuildTasks
 
-##Join Project
+## Development Builds
+
+Development builds are available on the myget.org feed.  A development build is promoted to the main NuGet feed when it's determined to be stable. 
+
+In your Package Manager settings add the following package source for development builds:
+http://www.myget.org/F/loresoft/
+
+## Join Project
 
 Please join the MSBuild Community Tasks Project and help contribute in building the tasks. 
 
 Google Group for MSBuild Community Tasks
 https://groups.google.com/d/forum/msbuildtasks
 
-##Current Community Tasks
+## Current Community Tasks
 
-<table border="0" cellpadding="3" cellspacing="0" width="90%" id="tasksTable">
-    <tr>
-        <th align="left" width="190">
-            Task
+<!-- This is generated from Documentation\TaskList.xslt, and Documentation\TaskDocs.md is generated from TaskDocs.xslt -->
+<table border="0" cellpadding="3" cellspacing="0" width="90%" id="tasksTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <tr>
+    <th align="left" width="190">
+          Task
         </th>
-        <th align="left">
-            Description
+    <th align="left">
+          Description
         </th>
-    </tr>
-    <tr>
-        <td>
-            Add
-        </td>
-        <td>
-            Add numbers
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AddTnsName
-        </td>
-        <td>
-            Defines a database host within the Oracle TNSNAMES.ORA file.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AppPoolController
-        </td>
-        <td>
-            Allows control for an application pool on a local or remote machine with IIS installed. The default is to control the application pool on the local machine. If connecting to a remote machine, you can specify the and for the task to run under.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AppPoolCreate
-        </td>
-        <td>
-            Creates a new application pool on a local or remote machine with IIS installed. The default is to create the new application pool on the local machine. If connecting to a remote machine, you can specify the and for the task to run under.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AppPoolDelete
-        </td>
-        <td>
-            Deletes an existing application pool on a local or remote machine with IIS installed. The default is to delete an existing application pool on the local machine. If connecting to a remote machine, you can specify the and for the task to run under.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AssemblyInfo
-        </td>
-        <td>
-            Generates an AssemblyInfo files
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Attrib
-        </td>
-        <td>
-            Changes the attributes of files and/or directories
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Beep
-        </td>
-        <td>
-            A task to play the sound of a beep through the console speaker.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            BuildAssembler
-        </td>
-        <td>
-            BuildAssembler task for Sandcastle.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ChmBuilder
-        </td>
-        <td>
-            ChmBuilder task for Sandcastle.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ChmCompiler
-        </td>
-        <td>
-            Html Help 1x compiler task.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Computer
-        </td>
-        <td>
-            Provides information about the build computer.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            DBCSFix
-        </td>
-        <td>
-            DBCSFix task for Sandcastle.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Divide
-        </td>
-        <td>
-            Divide numbers
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ExecuteDDL
-        </td>
-        <td>
-            MSBuild task to execute DDL and SQL statements.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FileUpdate
-        </td>
-        <td>
-            Replace text in file(s) using a Regular Expression.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FtpCreateRemoteDirectory
-        </td>
-        <td>
-            Creates a full remote directory on the remote server if not exists using the File Transfer Protocol (FTP). This can be one directory or a full path to create.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FtpDirectoryExists
-        </td>
-        <td>
-            Determ if a remote directory exists on a FTP server or not.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FtpUpload
-        </td>
-        <td>
-            Uploads a group of files using File Transfer Protocol (FTP).
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FtpUploadDirectoryContent
-        </td>
-        <td>
-            Uploads a full directory content to a remote directory.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FxCop
-        </td>
-        <td>
-            Uses FxCop to analyse managed code assemblies and reports on their design best-practice compliance.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            GacUtil
-        </td>
-        <td>
-            MSBuild task to install and uninstall asseblies into the GAC
-        </td>
-    </tr>
-    <tr>
-        <td>
-            GetSolutionProjects
-        </td>
-        <td>
-            Retrieves the list of Projects contained within a Visual Studio Solution (.sln) file
-        </td>
-    </tr>
-    <tr>
-        <td>
-            HxCompiler
-        </td>
-        <td>
-            A Html Help 2.0 compiler task.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ILMerge
-        </td>
-        <td>
-            A wrapper for the ILMerge tool.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            InstallAspNet
-        </td>
-        <td>
-            Installs and register script mappings for ASP.NET
-        </td>
-    </tr>
-    <tr>
-        <td>
-            InstallAssembly
-        </td>
-        <td>
-            Installs assemblies.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            JSCompress
-        </td>
-        <td>
-            Compresses JavaScript source by removing comments and unnecessary whitespace. It typically reduces the size of the script by half, resulting in faster downloads and code that is harder to read.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Mail
-        </td>
-        <td>
-            Sends an email message
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Merge
-        </td>
-        <td>
-            Merge files into the destination file.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Modulo
-        </td>
-        <td>
-            Performs the modulo operation on numbers.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Move
-        </td>
-        <td>
-            Moves files on the filesystem to a new location.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            MRefBuilder
-        </td>
-        <td>
-            MRefBuilder task for Sandcastle.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Multiple
-        </td>
-        <td>
-            Multiple numbers
-        </td>
-    </tr>
-    <tr>
-        <td>
-            NDoc
-        </td>
-        <td>
-            Runs the NDoc application.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            NUnit
-        </td>
-        <td>
-            Run NUnit 2.4 on a group of assemblies.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Prompt
-        </td>
-        <td>
-            Displays a message on the console and waits for user input.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RegexMatch
-        </td>
-        <td>
-            Task to filter an Input list with a Regex expression. Output list contains items from Input list that matched given expression
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RegexReplace
-        </td>
-        <td>
-            Task to replace portions of strings within the Input list Output list contains all the elements of the Input list after performing the Regex Replace.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RegistryRead
-        </td>
-        <td>
-            Reads a value from the Registry
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RegistryWrite
-        </td>
-        <td>
-            Writes a value to the Registry
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RoboCopy
-        </td>
-        <td>
-            Task wrapping the Window Resource Kit Robocopy.exe command.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sandcastle
-        </td>
-        <td>
-            The Sandcastle task.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Script
-        </td>
-        <td>
-            Executes code contained within the task.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ServiceController
-        </td>
-        <td>
-            Task that can control a Windows service.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ServiceQuery
-        </td>
-        <td>
-            Task that can determine the status of a specified service on a target server.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sleep
-        </td>
-        <td>
-            A task for sleeping for a specified period of time.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sound
-        </td>
-        <td>
-            A task to play a sound from a .wav file path or URL.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SqlExecute
-        </td>
-        <td>
-            Executes a SQL command.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SqlPubWiz
-        </td>
-        <td>
-            The Database Publishing Wizard enables the deployment of SQL Server databases (both schema and data) into a shared hosting environment.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Subtract
-        </td>
-        <td>
-            Subtract numbers
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnCheckout
-        </td>
-        <td>
-            Checkout a local working copy of a Subversion repository.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnClient
-        </td>
-        <td>
-            Subversion client base class
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnCommit
-        </td>
-        <td>
-            Subversion Commit command
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnCopy
-        </td>
-        <td>
-            Copy a file or folder in Subversion
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnExport
-        </td>
-        <td>
-            Export a folder from a Subversion repository
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnInfo
-        </td>
-        <td>
-            Run the "svn info" command and parse the output
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnUpdate
-        </td>
-        <td>
-            Subversion Update command
-        </td>
-    </tr>
-    <tr>
-        <td>
-            SvnVersion
-        </td>
-        <td>
-            Summarize the local revision(s) of a working copy.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            TaskSchema
-        </td>
-        <td>
-            A Task that generates a XSD schema of the tasks in an assembly.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            TemplateFile
-        </td>
-        <td>
-            MSBuild task that replaces tokens in a template file and writes out a new file.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            TfsVersion
-        </td>
-        <td>
-            Determines the changeset in a local Team Foundation Server workspace
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Time
-        </td>
-        <td>
-            Gets the current date and time.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            UninstallAssembly
-        </td>
-        <td>
-            Uninstalls assemblies.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Unzip
-        </td>
-        <td>
-            Unzip a file to a target directory.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            User
-        </td>
-        <td>
-            Provides information about the build user.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Version
-        </td>
-        <td>
-            Generates version information based on various algorithms
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssAdd
-        </td>
-        <td>
-            Task that adds files to a Visual SourceSafe database.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssCheckin
-        </td>
-        <td>
-            Task that executes a checkin against a VSS Database.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssCheckout
-        </td>
-        <td>
-            Task that executes a checkout of files or projects against a Visual SourceSafe database.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssClean
-        </td>
-        <td>
-            Task that can strip the source control information from a Visual Studio Solution and subprojects.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssDiff
-        </td>
-        <td>
-            Task that records differences between the latest version of all the items in a Visual SourceSafe project and another version or label to a file.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssGet
-        </td>
-        <td>
-            Task that retireves an item or project from a Visual SourceSafe database.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssHistory
-        </td>
-        <td>
-            Generates an XML file containing details of all changes made to a Visual SourceSafe project or file between specified labels or dates.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssLabel
-        </td>
-        <td>
-            Task that applies a label to a Visual SourceSafe item.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            VssUndoCheckout
-        </td>
-        <td>
-            Task that undoes a checkout of files or projects against a Visual SourceSafe database.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            WebDirectoryCreate
-        </td>
-        <td>
-            Creates a new web directory on a local or remote machine with IIS installed. The default is to create the new web directory on the local machine. The physical path is required to already exist on the target machine. If connecting to a remote machine, you can specify the and for the task to run under.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            WebDirectoryDelete
-        </td>
-        <td>
-            Deletes a web directory on a local or remote machine with IIS installed. The default is to delete the web directory on the local machine. If connecting to a remote machine, you can specify the and for the task to run under.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            WebDirectoryScriptMap
-        </td>
-        <td>
-            Sets an application mapping for a filename extension on an existing web directory.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            WebDirectorySetting
-        </td>
-        <td>
-            Reads and modifies a web directory configuration setting.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            WebDownload
-        </td>
-        <td>
-            Downloads a resource with the specified URI to a local file.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            XmlMassUpdate
-        </td>
-        <td>
-            Performs multiple updates on an XML file
-        </td>
-    </tr>
-    <tr>
-        <td>
-            XmlQuery
-        </td>
-        <td>
-            Reads a value or values from lines of XML
-        </td>
-    </tr>
-    <tr>
-        <td>
-            XmlRead
-        </td>
-        <td>
-            Reads a value from a XML document using a XPath.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            XmlUpdate
-        </td>
-        <td>
-            Updates a XML document using a XPath.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Xslt
-        </td>
-        <td>
-            A task to merge and transform a set of xml files.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            XslTransform
-        </td>
-        <td>
-            XslTransform task for Sandcastle.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Zip
-        </td>
-        <td>
-            Create a zip file with the files specified.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span style="font-size: 8pt">&nbsp;* Items not complete or have not been released.</span>
-        </td>
-    </tr>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Add">Add</a></td>
+    <td>Add numbers</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#AppPoolController">AppPoolController</a></td>
+    <td>Allows control for an application pool on a local or remote machine with IIS installed.  The default is 
+            to control the application pool on the local machine.  If connecting to a remote machine, you can
+            specify the  and  for the task
+            to run under.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#AppPoolCreate">AppPoolCreate</a></td>
+    <td>Creates a new application pool on a local or remote machine with IIS installed.  The default is 
+            to create the new application pool on the local machine.  If connecting to a remote machine, you can
+            specify the  and  for the task
+            to run under.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#AppPoolDelete">AppPoolDelete</a></td>
+    <td>Deletes an existing application pool on a local or remote machine with IIS installed.  The default is 
+            to delete an existing application pool on the local machine.  If connecting to a remote machine, you can
+            specify the  and  for the task
+            to run under.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#AssemblyInfo">AssemblyInfo</a></td>
+    <td>Generates an AssemblyInfo files</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Attrib">Attrib</a></td>
+    <td>Changes the attributes of files and/or directories</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Divide">Divide</a></td>
+    <td>Divide numbers</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#EmbedNativeResource">EmbedNativeResource</a></td>
+    <td>Embed native (rather than .NET) resource into a DLL or EXE.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#FileUpdate">FileUpdate</a></td>
+    <td>Replace text in file(s) using a Regular Expression.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#FtpUpload">FtpUpload</a></td>
+    <td>Uploads a file using File Transfer Protocol (FTP).</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#FxCop">FxCop</a></td>
+    <td>Uses FxCop to analyse managed code assemblies and reports on
+            their design best-practice compliance.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#GetSolutionProjects">GetSolutionProjects</a></td>
+    <td>Task to get paths to projects and project names from VS2005 solution file</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#ILMerge">ILMerge</a></td>
+    <td>A wrapper for the ILMerge tool.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Mail">Mail</a></td>
+    <td>Sends an email message</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Multiple">Multiple</a></td>
+    <td>Multiply numbers</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#MV">MV</a></td>
+    <td>Moves files on the filesystem to a new location.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#NDoc">NDoc</a></td>
+    <td>Runs the NDoc application.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#NUnit">NUnit</a></td>
+    <td>Run NUnit on a group of assemblies.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#NUnit3">NUnit3</a></td>
+    <td>Run NUnit3.x on a group of assemblies.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#RegexMatch">RegexMatch</a></td>
+    <td>Task to filter an Input list with a Regex expression.
+            Output list contains items from Input list that matched given expression</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#RegexReplace">RegexReplace</a></td>
+    <td>Task to replace portions of strings within the Input list
+            Output list contains all the elements of the Input list after
+            performing the Regex Replace.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#RegistryRead">RegistryRead</a></td>
+    <td>Reads a value from the Registry</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#RegistryWrite">RegistryWrite</a></td>
+    <td>Writes a value to the Registry</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Script">Script</a></td>
+    <td>Executes code contained within the task.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#ServiceController">ServiceController</a></td>
+    <td>Task that can control a Windows service.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#ServiceQuery">ServiceQuery</a></td>
+    <td>Task that can determine the status of a specified service
+            on a target server.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Sleep">Sleep</a></td>
+    <td>A task for sleeping for a specified period of time.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SqlExecute">SqlExecute</a></td>
+    <td>Executes a SQL command.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Subtract">Subtract</a></td>
+    <td>Subtract numbers</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnCheckout">SvnCheckout</a></td>
+    <td>Checkout a local working copy of a Subversion repository.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnClient">SvnClient</a></td>
+    <td>Subversion client base class</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnCommit">SvnCommit</a></td>
+    <td>Subversion Commit command</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnExport">SvnExport</a></td>
+    <td>Export a folder from a Subversion repository</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnInfo">SvnInfo</a></td>
+    <td>Run the "svn info" command and parse the output</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnUpdate">SvnUpdate</a></td>
+    <td>Subversion Update command</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#SvnVersion">SvnVersion</a></td>
+    <td>Summarize the local revision(s) of a working copy.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#TaskSchema">TaskSchema</a></td>
+    <td>A Task that generates a XSD schema of the tasks in an assembly.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#TemplateFile">TemplateFile</a></td>
+    <td>A task that replaces tokens in a template file and writes out a new file.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Time">Time</a></td>
+    <td>Gets the current date and time.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Unzip">Unzip</a></td>
+    <td>Unzip a file to a target directory.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Version">Version</a></td>
+    <td>Get Version information from file.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssAdd">VssAdd</a></td>
+    <td>Task that adds files to a Visual SourceSafe database.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssCheckin">VssCheckin</a></td>
+    <td>Task that executes a checkin against a VSS Database.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssCheckout">VssCheckout</a></td>
+    <td>Task that executes a checkout of files or projects
+            against a Visual SourceSafe database.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssClean">VssClean</a></td>
+    <td>Task that can strip the source control information from a
+            Visual Studio Solution and subprojects.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssDiff">VssDiff</a></td>
+    <td>Task that records differences between the latest version
+            of all the items in a Visual SourceSafe project and another version or label
+            to a file.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssGet">VssGet</a></td>
+    <td>Task that retireves an item or project from a Visual SourceSafe database.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssHistory">VssHistory</a></td>
+    <td>Generates an XML file containing details of all changes made
+            to a Visual SourceSafe project or file between specified labels or dates.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssLabel">VssLabel</a></td>
+    <td>Task that applies a label to a Visual SourceSafe item.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#VssUndoCheckout">VssUndoCheckout</a></td>
+    <td>Task that undoes a checkout of files or projects
+            against a Visual SourceSafe database.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#WebDirectoryCreate">WebDirectoryCreate</a></td>
+    <td>Creates a new web directory on a local or remote machine with IIS installed.  The default is 
+            to create the new web directory on the local machine.  The physical path is required to already exist
+            on the target machine.  If connecting to a remote machine, you can specify the 
+            and  for the task to run under.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#WebDirectoryDelete">WebDirectoryDelete</a></td>
+    <td>Deletes a web directory on a local or remote machine with IIS installed.  The default is 
+            to delete the web directory on the local machine.  If connecting to a remote machine, you
+            can specify the  and  for the
+            task to run under.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#WebDownload">WebDownload</a></td>
+    <td>Downloads a resource with the specified URI to a local file.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#XmlRead">XmlRead</a></td>
+    <td>Reads a value from a XML document using a XPath.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#XmlUpdate">XmlUpdate</a></td>
+    <td>Updates a XML document using a XPath.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Xslt">Xslt</a></td>
+    <td>A task to merge and transform
+             a set of xml files.</td>
+  </tr>
+  <tr>
+    <td><a href="Documentation/TaskDocs.md#Zip">Zip</a></td>
+    <td>Create a zip file with the files specified.</td>
+  </tr>
 </table>
+
     
-##Getting Started
+## Getting Started
 
 In order to use the tasks in this project, you need to import the MSBuild.Community.Tasks.Targets files. 
 
@@ -763,7 +325,7 @@ Alternatively if you want to get started with the nuget packages please add the 
 
 ## License
 
-Copyright (c) 2012, LoreSoft
+Copyright (c) 2016, LoreSoft
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

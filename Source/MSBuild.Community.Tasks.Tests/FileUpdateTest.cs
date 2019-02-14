@@ -14,7 +14,7 @@ namespace MSBuild.Community.Tasks.Tests
         private string testDirectory;
         string[] files;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
 		public void FixtureInit()
 		{
             MockBuild buildEngine = new MockBuild();
@@ -33,7 +33,7 @@ namespace MSBuild.Community.Tasks.Tests
 				"In case you didn't understand, today's date is: @DATE@!");
 		}
 
-        //[TestFixtureTearDown]
+        //[OneTimeTearDown]
         //public void FixtureDispose()
         //{
         //    // Clean up test files
@@ -62,5 +62,28 @@ namespace MSBuild.Community.Tasks.Tests
 			task.ReplacementText = DateTime.Now.ToString();
 			Assert.IsTrue(task.Execute(), "Execute Failed!");
 		}
+
+        [Test]
+        public void TestItemsNotUpdated()
+        {
+            FileUpdate task = new FileUpdate();
+            task.BuildEngine = new MockBuild();
+
+            TaskItem[] items = TaskUtility.StringArrayToItemArray(files);
+
+            task.Files = items;
+            task.Regex = @"(\d+)\.(\d+)\.(\d+)\.(\d+)";
+            task.ReplacementText = "$1.$2.$3.123";
+            Assert.IsTrue(task.Execute(), "Execute Failed!");
+
+            task = new FileUpdate();
+            task.BuildEngine = new MockBuild();
+            task.Files = items;
+            task.Regex = @"TestExitStatusAndNotUpdatedItems";
+            task.ReplacementText = DateTime.Now.ToString();
+            Assert.IsTrue(task.Execute(), "Execute Failed!");
+            Assert.IsTrue(task.ItemsNotUpdated.Length == 3);
+            Assert.IsFalse(task.AllItemsUpdated);
+        }       
     }
 }

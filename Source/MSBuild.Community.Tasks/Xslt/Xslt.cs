@@ -260,19 +260,22 @@ namespace MSBuild.Community.Tasks
 
 			try
 			{
-				transform.Load(
-						xsl.ItemSpec, 
-						useTrusted
-							? XsltSettings.TrustedXslt
-							: XsltSettings.Default,
-						null);
+                if(useTrusted) 
+                {
+                    transform.Load(xsl.ItemSpec, XsltSettings.TrustedXslt, null);
+                }
+                else
+                {   
+                    transform.Load(xsl.ItemSpec, XsltSettings.Default, new XmlUrlResolver());
+                }
+
 				xmlWriter = XmlWriter.Create(this.output, transform.OutputSettings);
 
 				transform.Transform(doc.DocumentElement, argumentList, xmlWriter);
 			}
 			catch (XsltException ex)
 			{
-				Log.LogErrorFromException(ex);
+				Log.LogErrorFromException(ex, false, true, new Uri(ex.SourceUri).LocalPath + '(' + ex.LineNumber + ',' + ex.LinePosition + ')');
 				return false;
 			}
 			catch (FileNotFoundException ex)
@@ -287,7 +290,7 @@ namespace MSBuild.Community.Tasks
 			}
 			catch (XmlException ex)
 			{
-				Log.LogErrorFromException(ex);
+				Log.LogErrorFromException(ex, false, true, new Uri(ex.SourceUri).LocalPath + '(' + ex.LineNumber + ',' + ex.LinePosition + ')');
 				return false;
 			}
 			finally

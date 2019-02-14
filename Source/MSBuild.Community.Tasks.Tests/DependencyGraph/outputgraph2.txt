@@ -1,0 +1,7 @@
+﻿digraph {
+	subgraph ProjectReferences {
+		node [shape=box];
+		"{F88A60A8-564C-4E70-92DC-E92DBB897641}" [label="MSBuild.Community.Tasks"];
+	}
+	"{F88A60A8-564C-4E70-92DC-E92DBB897641}" -> "Ionic.Zip.Reduced";
+}
